@@ -142,10 +142,13 @@ Element providing a flip box effect, allowing for any content on front and back.
         reset: function(){
           var self =  this;
 
-          self.animation.play(self._fadeEffect(self.$.box, 300, 1, 0));
+          // self.animation.play(self._fadeEffect(self.$.box, 300, 1, 0));
+          self.$.box.animate([{ opacity: 1},{ opacity: 0}], {duration: 300, fill: "forwards"});
            
           if (self._flipped){
-            self.animation.play(self._flipEffect(self.$.box, 750, "rotateY(0deg)"));
+            // self.animation.play(self._flipEffect(self.$.box, 750, "rotateY(0deg)"));
+            self.$.box.animate([{ transform: "rotateY(180deg)"},{ transform: "rotateY(0deg)"}], {duration: 750, fill: "forwards"});
+            self._flipped = false;
           }
         }
       });
